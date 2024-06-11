@@ -1,0 +1,17 @@
+�	defVar --name count --type Numeric
+defVar --name ListNames --type List --innertype String --value "[Guilherme,Wollace]"
+defVar --name Name --type String
+logMessage --message starting --type "Info" --comment "STARTING PROGRAM"
+for --variable ${count} --from 1 --to ${ListNames.Count} --step 1 --comment "FOR TO ITERATE IN LIST"
+	logMessage --message "Count ${count}\r\nIn list: ${ListNames}" --type "Info" --comment "PRINTING IN LOG MESSAGE \'COUNT\' AND LIST"
+	get --collection "${ListNames}" --index "${count}" --comment "CATCHING NAME IN THE LIST" Name=value
+	logMessage --message "Name: ${Name}" --type "Info" --comment "PRINTING NAME"
+	case --switches "Any" --comment "CASE \'ANY\' At least one condition must be true."
+		when --left "${Name}" --operator "Equal_To" --right Wollace --comment "NAME IS WOLLACE?"
+	then --comment "IF NAME IS WOLLACE, THEN..."
+		logMessage --message "Oi ${Name}" --type "Info" --comment "PRINTING \'HI WOLLACE\'"
+	otherwise --comment "ELSE..."
+		logMessage --message "Não é Wollace..." --type "Info" --comment "IS NOT WOLLACE"
+	endCase --comment "END CASE"
+next
+logMessage --message end --type "Info" --comment "END PROGRAM"*	23.0.16.0
